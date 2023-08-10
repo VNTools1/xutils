@@ -36,6 +36,33 @@ func Read(filepath string) string {
 	return string(b)
 }
 
+// ReadLines ...
+func ReadLines(filepath string) ([]string, error) {
+	file, err := os.Open(filepath)
+	if err != nil {
+		return []string{}, err
+	}
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+			return
+		}
+	}(file)
+
+	// Create a scanner to read from the file
+	scanner := bufio.NewScanner(file)
+	var lines []string
+	// Iterate through each line
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		return []string{}, err
+	}
+	return lines, nil
+}
+
 // Write ...
 func Write(filepath, str string) error {
 	return os.WriteFile(filepath, []byte(str), 0755)
