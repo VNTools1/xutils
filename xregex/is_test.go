@@ -31,8 +31,8 @@ func TestIs(t *testing.T) {
 	assert.True(t, IsTime("15:04:05"))
 	assert.True(t, IsHexColor("#000000"))
 
-	assert.True(t, IsIdcard("342622200001010101"))
-	assert.True(t, IsIdcard("34262220000101010x"))
-	assert.True(t, IsIdcard("34262220000101010X"))
-	assert.False(t, IsIdcard("3426222000010101"))
+	assert.True(t, IsIdCard("342622200001010101"))
+	assert.True(t, IsIdCard("34262220000101010x"))
+	assert.True(t, IsIdCard("34262220000101010X"))
+	assert.False(t, IsIdCard("3426222000010101"))
 }
