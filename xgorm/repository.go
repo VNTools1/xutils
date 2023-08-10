@@ -1,3 +1,4 @@
+// Package xgorm
 /*
  * @Date: 2023-07-20 10:07:02
  * @LastEditTime: 2023-07-20 10:17:25
@@ -7,6 +8,7 @@ package xgorm
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"strings"
 	"time"
@@ -313,7 +315,7 @@ func (r *gormRepository) DeleteTx(target interface{}, tx *gorm.DB) error {
 }
 
 func (r *gormRepository) HandleError(res *gorm.DB) error {
-	if res.Error != nil && res.Error != gorm.ErrRecordNotFound {
+	if res.Error != nil && !errors.Is(res.Error, gorm.ErrRecordNotFound) {
 		err := fmt.Errorf("error: %w", res.Error)
 		r.logger.Error(err)
 		return err

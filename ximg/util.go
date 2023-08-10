@@ -18,7 +18,9 @@ func Parse(filepath string) (image.Image, string, error) {
 	if err != nil {
 		return nil, "", err
 	}
-	defer f.Close()
+	defer func() {
+		_ = f.Close()
+	}()
 	return image.Decode(f)
 }
 
@@ -55,7 +57,9 @@ func Write(filepath string, src image.Image) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer func() {
+		_ = file.Close()
+	}()
 	ext := xfile.GetFileExt(filepath)
 	switch ext {
 	case "jpg", "jpeg":

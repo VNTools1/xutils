@@ -1,14 +1,11 @@
 package xlog
 
-// ...
 type (
 	CtxTraceKey struct{}
 )
 
-// Fields ...
 type Fields map[string]interface{}
 
-// ...
 const (
 	FieldTraceId = "trace_id"
 )

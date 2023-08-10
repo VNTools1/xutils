@@ -16,7 +16,7 @@ const (
 	patternTime       = `(?i)\d{1,2}:\d{2} ?(?:[ap]\.?m\.?)?|\d[ap]\.?m\.?`
 	patternChinese    = "[\u4E00-\u9FA5]+"
 	patternHexColor   = `(?:#?([0-9a-fA-F]{6}|[0-9a-fA-F]{3}))`
-	patternIdcard     = `(?i)[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)`
+	patternIdCard     = `(?i)[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)`
 )
 
 // patternMap...
@@ -51,7 +51,7 @@ func init() {
 		patternTime,
 		patternChinese,
 		patternHexColor,
-		patternIdcard,
+		patternIdCard,
 	)
 }
 

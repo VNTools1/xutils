@@ -1,3 +1,4 @@
+// Package xhashring
 /*
  * @Date: 2023-07-20 09:38:29
  * @LastEditTime: 2023-07-20 09:43:16
@@ -11,14 +12,14 @@ import (
 	"github.com/serialx/hashring"
 )
 
-func NewHashring(prefix string, slots int) *hashring.HashRing {
+func NewHashRing(prefix string, slots int) *hashring.HashRing {
 	if slots == 0 {
 		slots = 20
 	}
 	if prefix == "" {
 		prefix = "hashring_test"
 	}
-	hashKeys := []string{}
+	var hashKeys []string
 	for i := 0; i < slots; i++ {
 		key := fmt.Sprintf("%s_%d", prefix, i)
 		hashKeys = append(hashKeys, key)

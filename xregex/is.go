@@ -50,7 +50,7 @@ func IsHexColor(s string) bool {
 	return is(patternHexColor, s)
 }
 
-// IsIdcard ...
-func IsIdcard(s string) bool {
-	return is(patternIdcard, s)
+// IsIdCard ...
+func IsIdCard(s string) bool {
+	return is(patternIdCard, s)
 }

@@ -77,16 +77,30 @@ func BuildFormData(header http.Header, m map[string]interface{}) (http.Header, i
 			}
 			part, err := w.CreateFormFile(k, filepath.Base(fpath))
 			if err != nil {
-				f.Close()
+				err := f.Close()
+				if err != nil {
+					return nil, nil
+				}
 				continue
 			}
-			io.Copy(part, f)
-			f.Close()
+			_, err = io.Copy(part, f)
+			if err != nil {
+				return nil, nil
+			}
+			err = f.Close()
+			if err != nil {
+				return nil, nil
+			}
 			continue
 		}
-		w.WriteField(k, fmt.Sprintf("%v", v))
+		err := w.WriteField(k, fmt.Sprintf("%v", v))
+		if err != nil {
+			return nil, nil
+		}
 	}
-	defer w.Close()
+	defer func() {
+		_ = w.Close()
+	}()
 	header.Set(HeaderKeyContentType, w.FormDataContentType())
 	return header, b
 }

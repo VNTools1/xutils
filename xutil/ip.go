@@ -1,3 +1,4 @@
+// Package xutil
 /*
  * @Date: 2023-07-20 09:34:46
  * @LastEditTime: 2023-07-20 10:26:35
@@ -34,11 +35,16 @@ func GetIntranetIP() string {
 // GetExternalIP 获取公网 IP
 func GetExternalIP() string {
 	// http://icanhazip.com/
-	resp, err := http.Get("http://myexternalip.com/raw")
+	resp, err := http.Get("https://myexternalip.com/raw")
 	if err != nil {
 		return ""
 	}
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+
+		}
+	}(resp.Body)
 	b, _ := io.ReadAll(resp.Body)
 	return string(b)
 }

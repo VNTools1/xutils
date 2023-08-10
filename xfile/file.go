@@ -76,7 +76,12 @@ func LineCount(filepath string) int {
 	if err != nil {
 		return 0
 	}
-	defer f.Close()
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			return
+		}
+	}(f)
 	count := 0
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
@@ -91,7 +96,12 @@ func LineContent(filepath string, numbers ...int) map[int]string {
 	if err != nil {
 		return nil
 	}
-	defer f.Close()
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			return
+		}
+	}(f)
 	res := make(map[int]string)
 	count := len(numbers)
 	scanner := bufio.NewScanner(f)
@@ -155,7 +165,12 @@ func Md5(path string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer f.Close()
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			return
+		}
+	}(f)
 	fi, err := f.Stat()
 	if err != nil {
 		return "", err

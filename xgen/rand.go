@@ -10,13 +10,13 @@ func RandNumber(min, max int) int {
 	if min > max {
 		return 0
 	}
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	return min + rand.Intn(max+1-min)
 }
 
 // RandString ...
 func RandString(length int) string {
-	rand.Seed(time.Now().UnixNano())
+	rand.New(rand.NewSource(time.Now().UnixNano()))
 	bytes := make([]byte, length)
 	for i := 0; i < length; i++ {
 		b := rand.Intn(26) + 65

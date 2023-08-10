@@ -14,7 +14,10 @@ import (
 // GUID ...
 func GUID() string {
 	b := make([]byte, 48)
-	io.ReadFull(rand.Reader, b)
+	_, err := io.ReadFull(rand.Reader, b)
+	if err != nil {
+		return ""
+	}
 	return xcrypto.Md5(xencoding.Base64Encode(string(b)))
 }
 

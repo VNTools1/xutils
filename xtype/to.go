@@ -68,7 +68,7 @@ func ToUint(v interface{}) uint {
 	return uint(ToInt64(v))
 }
 
-// ToUint ...
+// ToUint64 ...
 func ToUint64(v interface{}) uint64 {
 	return uint64(ToInt64(v))
 }

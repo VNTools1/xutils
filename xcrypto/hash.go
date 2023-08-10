@@ -23,7 +23,10 @@ func Hash(str string, seed int) uint64 {
 	dataSha := sha256.Sum256([]byte(str))
 	data := dataSha[:]
 	m := murmur3.New64WithSeed(uint32(seed))
-	m.Write(data)
+	_, err := m.Write(data)
+	if err != nil {
+		return 0
+	}
 	return m.Sum64()
 }
 

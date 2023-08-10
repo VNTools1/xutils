@@ -7,13 +7,13 @@ import (
 )
 
 func TestParseURL(t *testing.T) {
-	// e.g. http://baidu.com/query?a=1&b=2#c=3
+	// e.g. https://baidu.com/query?a=1&b=2#c=3
 	// Scheme 		http
 	// Host 		baidu.com
 	// Path 		/query
 	// RawQuery 	a=1&b=2
 	// Fragment 	c=3
-	s := "http://baidu.com/query?a=1&b=2#c=3"
+	s := "https://baidu.com/query?a=1&b=2#c=3"
 	u, err := ParseURL(s)
 	assert.Nil(t, err)
 	assert.Equal(t, "http", u.Scheme)
@@ -44,8 +44,8 @@ func TestBuildQuery(t *testing.T) {
 		"b": 1,
 	}
 	assert.Equal(t, "a=a&b=1&c=2", BuildURL("", m))
-	assert.Equal(t, "http://abc?a=a&b=1&c=2", BuildURL("http://abc", m))
-	assert.Equal(t, "http://abc?h=1&a=a&b=1&c=2", BuildURL("http://abc?h=1", m))
+	assert.Equal(t, "https://abc?a=a&b=1&c=2", BuildURL("https://abc", m))
+	assert.Equal(t, "https://abc?h=1&a=a&b=1&c=2", BuildURL("https://abc?h=1", m))
 }
 
 func TestBuildFormValues(t *testing.T) {

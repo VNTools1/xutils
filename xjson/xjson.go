@@ -52,7 +52,7 @@ func (j *JSON) ToString() string {
 	return xtype.ToString(j.value)
 }
 
-// ToInt ...
+// ToInt64 ...
 func (j *JSON) ToInt64() int64 {
 	return xtype.ToInt64(j.value)
 }

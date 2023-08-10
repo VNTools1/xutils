@@ -1,3 +1,4 @@
+// Package xticker
 /*
  * @Date: 2023-07-20 10:24:45
  * @LastEditTime: 2023-07-20 10:24:57
@@ -29,7 +30,10 @@ func (t *MyTicker) Start() {
 		for {
 			select {
 			case <-t.MyTick.C:
-				t.Runner()
+				err := t.Runner()
+				if err != nil {
+					return
+				}
 			case <-t.Done:
 				t.MyTick.Stop()
 			}

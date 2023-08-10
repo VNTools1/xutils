@@ -1,3 +1,4 @@
+// Package xpool
 /*
  * @Date: 2023-07-11 13:55:42
  * @LastEditTime: 2023-07-12 14:28:40
@@ -11,16 +12,13 @@ import (
 	"sync"
 )
 
-// 定义接口 可传任意参数
 type TaskFunc func(args ...interface{})
 
-// 定义任务实体，里面有方法和参数
 type Task struct {
 	F    TaskFunc
 	Args interface{}
 }
 
-// 定义线程池对象
 type WorkPool struct {
 	Pool       chan *Task      //定义任务池
 	WorkCount  int             //工作线程数量,决定初始化几个goroutine
@@ -29,25 +27,25 @@ type WorkPool struct {
 	WG         sync.WaitGroup //阻塞计数器
 }
 
-// 任务执行
+// Execute ...
 func (t *Task) Execute(args ...interface{}) {
 	t.F(args...)
 }
 
-// 实例化一个新线程池
-func NewWrokPool(workerCount int, len int) *WorkPool {
+// NewWorkPool ...
+func NewWorkPool(workerCount int, len int) *WorkPool {
 	return &WorkPool{
 		WorkCount: workerCount,
 		Pool:      make(chan *Task, len),
 	}
 }
 
-// 任务入队
+// PushTask ...
 func (w *WorkPool) PushTask(task *Task) {
 	w.Pool <- task
 }
 
-// 任务调度 go协程从channel里取任务执行Execute方法
+// Work ...
 func (w *WorkPool) Work(wid int) {
 	for {
 		select {
@@ -66,7 +64,7 @@ func (w *WorkPool) Work(wid int) {
 
 }
 
-// 启动线程池，触发任务调度
+// Start ...
 func (w *WorkPool) Start() *WorkPool {
 	//定义好worker数量
 	w.WG.Add(w.WorkCount)
@@ -78,7 +76,7 @@ func (w *WorkPool) Start() *WorkPool {
 	return w
 }
 
-// 停止执行任务，回收正在执行任务的协程 协程计数器减1 直到变成0退出，否则阻塞
+// Stop ...
 func (w *WorkPool) Stop() {
 	w.StopCancel()
 	w.WG.Wait()

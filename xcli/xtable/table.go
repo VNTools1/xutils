@@ -66,7 +66,7 @@ func (t *table) Text() (content string) {
 		headerB = append(headerB, []rune(repeat(b.H, width+2)+string(b.VH))...)
 		footer = append(footer, []rune(repeat(b.H, width+2)+string(b.HU))...)
 		if len(t.headers) > 0 {
-			l := width - getLentgh([]rune(t.headers[i])) + 1
+			l := width - getLength([]rune(t.headers[i])) + 1
 			headerM = append(headerM, []rune(" "+t.headers[i]+repeat(' ', l)+string(b.V))...)
 		}
 	}
@@ -95,7 +95,7 @@ func (t *table) Text() (content string) {
 	for i, row := range t.rows {
 		body := []rune{b.V}
 		for i, width := range t.widths {
-			l := width - getLentgh([]rune(row[i])) + 1
+			l := width - getLength([]rune(row[i])) + 1
 			body = append(body, []rune(" "+row[i]+repeat(' ', l)+string(b.V))...)
 		}
 		content += string(body) + "\n"

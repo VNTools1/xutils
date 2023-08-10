@@ -20,7 +20,7 @@ type Option struct {
 // OptionFn ...
 type OptionFn func(*Option)
 
-// WithTrace 可以通过返回 Response.Trace 查询
+// WithTraceEnable 可以通过返回 Response.Trace 查询
 func WithTraceEnable() OptionFn {
 	return func(o *Option) {
 		o.TraceEnable = true

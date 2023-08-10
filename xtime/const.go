@@ -1,6 +1,5 @@
 package xtime
 
-// 格式化占位符
 const (
 	FormatDate     = "ymd"
 	FormatDateBar  = "y-m-d"
@@ -8,7 +7,6 @@ const (
 	FormatTimeJoin = "ymdhis"
 )
 
-// ...
 var formatMap = map[string]string{
 	"y": "2006",
 	"m": "01",

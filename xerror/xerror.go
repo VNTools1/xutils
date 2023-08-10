@@ -1,3 +1,4 @@
+// Package xerror
 /*
  * @Date: 2023-07-20 09:34:46
  * @LastEditTime: 2023-07-20 10:00:55
@@ -12,24 +13,24 @@ import (
 
 // 定义错误
 var (
-	ErrCaptchaWrong     = New(425, "验证码错误")
-	ErrBadParameter     = New(426, "请求参数错误")
-	ErrInProcess        = New(427, "正在处理中，请稍后再试")
-	ErrLoginFailed      = New(401, "登陆失败，请重试")
-	ErrTokenNotFound    = New(401, "请先登陆")
-	ErrInvalidToken     = New(401, "登陆失效，请重新登陆")
-	ErrTokenExpired     = New(401, "登陆过期，请重新登陆")
-	ErrUserTokenExpired = New(401, "用户登陆过期，请重新登陆")
-	ErrNoPerm           = New(401, "无访问权限")
-	ErrInvalidContent   = New(87014, "非法内容")
-	ErrIsEmpty          = New(4041, "数据不存在")
-	ErrUserIsEmpty      = New(4042, "用户不存在")
-	ErrUserStatusWrong  = New(4044, "用户已注销")
-	ErrNotFound         = New(404, "资源不存在")
-	ErrMethodNotAllow   = New(405, "方法不被允许")
-	ErrAppConfigErr     = New(426, "服务配置错误")
-	ErrTooManyRequests  = New(429, "请求过于频繁")
-	ErrInternalServer   = New(500, "服务器发生错误")
+	ErrCaptchaWrong     = New(425, "error captcha")
+	ErrBadParameter     = New(426, "error bad parameter")
+	ErrInProcess        = New(427, "processing, please try again later")
+	ErrLoginFailed      = New(401, "login failed, please try again")
+	ErrTokenNotFound    = New(401, "please login first")
+	ErrInvalidToken     = New(401, "login invalid, please login again")
+	ErrTokenExpired     = New(401, "login expired, please login again")
+	ErrUserTokenExpired = New(401, "user login expired, please login again")
+	ErrNoPermmission    = New(401, "no access permission")
+	ErrInvalidContent   = New(87014, "illegal content")
+	ErrIsEmpty          = New(4041, "data does not exist")
+	ErrUserIsEmpty      = New(4042, "user does not exist")
+	ErrUserStatusWrong  = New(4044, "user logged out")
+	ErrNotFound         = New(404, "resource not found")
+	ErrMethodNotAllow   = New(405, "method not allowed")
+	ErrAppConfigErr     = New(426, "service configuration error")
+	ErrTooManyRequests  = New(429, "requests are too frequent")
+	ErrInternalServer   = New(500, "server error")
 )
 
 var (

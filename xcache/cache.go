@@ -1,3 +1,4 @@
+// Package xcache
 /*
  * @Date: 2023-07-20 09:46:36
  * @LastEditTime: 2023-07-20 09:46:37
@@ -204,7 +205,7 @@ func (p *Cache) SaveCache(ctx context.Context, key string, dest any, ttl time.Du
 	return p.store.Set(ctx, key, values, ttl)
 }
 
-// SaveCache 写入缓存数据
+// SaveTagCache 写入缓存数据
 func (p *Cache) SaveTagCache(ctx context.Context, tag string, key string) error {
 	return p.store.SaveTagKey(ctx, tag, key)
 }
@@ -222,7 +223,7 @@ func (p *Cache) RemoveFromTag(ctx context.Context, tag string) error {
 	return p.store.RemoveFromTag(ctx, tag)
 }
 
-// RemoveFromTag 根据key删除缓存数据
+// RemoveFromKey 根据key删除缓存数据
 // @param ctx
 // @param key
 // @date 2022-07-02 08:08:59

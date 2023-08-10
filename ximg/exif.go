@@ -13,7 +13,9 @@ func ReadExif(filepath string) map[string]interface{} {
 	if err != nil {
 		return nil
 	}
-	defer exif.Close()
+	defer func() {
+		_ = exif.Close()
+	}()
 
 	metadatas := exif.ExtractMetadata(filepath)
 	fields := make(map[string]interface{})
@@ -30,7 +32,9 @@ func WriteExif(filepath string, kv map[string]string) error {
 	if err != nil {
 		return err
 	}
-	defer exif.Close()
+	defer func() {
+		_ = exif.Close()
+	}()
 
 	metadatas := exif.ExtractMetadata(filepath)
 	if metadatas[0].Err != nil {
