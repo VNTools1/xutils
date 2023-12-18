@@ -26,7 +26,7 @@ require (
 	golang.org/x/exp v0.0.0-20230810033253-352e893a4cad
 	golang.org/x/image v0.11.0
 	golang.org/x/net v0.14.0
-	golang.org/x/text v0.12.0
+	golang.org/x/text v0.14.0
 	gorm.io/gorm v1.25.2
 )
 
@@ -53,11 +53,11 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/tebeka/strftime v0.1.5 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/crypto v0.12.0 // indirect
+	golang.org/x/crypto v0.17.0 // indirect
 	golang.org/x/exp/shiny v0.0.0-20230810033253-352e893a4cad // indirect
 	golang.org/x/mobile v0.0.0-20230531173138-3c911d8e3eda // indirect
 	golang.org/x/oauth2 v0.11.0 // indirect
-	golang.org/x/sys v0.11.0 // indirect
+	golang.org/x/sys v0.15.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
